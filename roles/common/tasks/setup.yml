@@ -1,0 +1,57 @@
+---
+
+# - name: Add repository
+#   yum_repository:
+#     name: epel
+#     description: EPEL YUM repo
+#     baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+
+- name: Add specific EPEL YUM repo
+  yum_repository:
+    name: epel
+    description: EPEL YUM repo
+    baseurl: http://mirror.math.princeton.edu/pub/epel/7Server/x86_64/
+    gpgcheck: no
+
+- name: "Keep up-to-date"
+  yum:
+    update_cache: yes
+    name: '*'
+    state: latest
+
+- name: "Install preferred packages"
+  yum: name={{ item }} state=present
+  with_items:
+   - vim 
+   - telnet 
+   - wget 
+   - git 
+   - net-tools 
+   - bind-utils 
+   - iptables-services 
+   - bridge-utils 
+   - bash-completion 
+   - nfs-utils
+   - python-jinja2
+   - ansible
+
+- name: "Nice to have extra packages"
+  yum: name={{ item }} state=present
+  with_items:
+   - emacs-nox 
+   - emacs
+   - squid
+   - lm_sensors
+   - powertop
+   - smartmontools
+   - sysstat
+   - mrtg
+
+- name: "Virtualization packages"
+  yum: name={{ item }} state=present
+  with_items:
+   - "@Virtualization Hypervisor"
+   - "@Virtualization Tools"
+   - "@Virtualization Client"
+   - "@Virtualization Platform"
+   - "libguestfs-tools"

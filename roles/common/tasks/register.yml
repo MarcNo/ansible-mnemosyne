@@ -1,0 +1,10 @@
+---
+- name: "register this new system"
+  shell: sudo subscription-manager register --username "{{ RHNUSER }}" --password "{{ RHNPASSWORD }}" --force
+
+- name: "attach to the Employee pool that includes OpenShift (replace with your own)"
+  shell: subscription-manager attach --pool=8a85f9813cf493fe013d028b6cf75b5a
+
+- name: "Enable repos for servers"
+  shell: subscription-manager repos --enable="rhel-7-server-rpms" --enable="rhel-7-server-extras-rpms"
+
