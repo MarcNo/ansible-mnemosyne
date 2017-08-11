@@ -14,6 +14,7 @@ Install a minimal RHEL 7.3 on a fresh bare metal system
 * edit the file group_vars/all/all_secret.yml and put this in it:
 
 `RHNUSER: your-real-redhat-username`
+
 `RHNPASSWORD: your-real-redhat-username`
 
 * The encrypt that file
@@ -23,6 +24,7 @@ Install a minimal RHEL 7.3 on a fresh bare metal system
 * Verify your secrets were encrypted to something like:
 
 `cat  group_vars/all/all_secret.yml `
+
 `$ANSIBLE_VAULT;1.1;AES256`
 `37316431303731316337336339636664323039656637393436343564316563663738396330636237`
 `3830343161333164383738616164303737333237643633340a376463336530343833643233623230`
