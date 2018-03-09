@@ -1,0 +1,6 @@
+---
+
+- name: Populate with web content from git
+  git: 
+    repo: 'https://github.com/MarcNo/merrimackhistory-web'
+    dest: /var/www/html/

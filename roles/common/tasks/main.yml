@@ -1,4 +1,5 @@
 ---
-- include: register.yml
 - include: setup.yml
-#- include: reboot.yml
+- include: httpd.yml
+- include: ftpd.yml
+- include: web-content.yml

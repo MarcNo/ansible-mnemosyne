@@ -1,0 +1,26 @@
+---
+
+- name: Install httpd
+  yum:
+    name: httpd
+    state: present
+
+- name: Enable httpd
+  service: 
+    name: httpd
+    state: started
+    enabled: yes
+
+- name: Configure firewalld for HTTP
+  firewalld:
+    service: http
+    permanent: true
+    state: enabled
+    immediate: true
+
+- name: configure firewalld for HTTPS
+  firewalld:
+    service: https
+    permanent: true
+    state: enabled
+    immediate: true

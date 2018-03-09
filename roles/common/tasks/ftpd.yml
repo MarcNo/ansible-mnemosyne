@@ -1,0 +1,20 @@
+---
+- name: install ftpd
+  yum:
+    name: vsftpd
+    state: present
+
+- name: Enable ftpd
+  service: 
+    name: vsftpd
+    state: started
+    enabled: yes
+
+- name: Configure firewalld for FTP
+  firewalld:
+    port: 21/tcp
+    permanent: true
+    immediate: true
+    state: enabled
+
+
